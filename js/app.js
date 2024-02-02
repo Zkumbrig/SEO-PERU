@@ -117,8 +117,38 @@ btnRight.addEventListener('click', () => {
 updateComment();
 
 
-
 // Carrusel Our Latest News
+let NewsButtons = document.querySelectorAll('.global-oln ul li button');
+let NewsContainer = document.querySelector('.details-news');
+let currentIndexNews = 0;
+let directionNews = 1; 
 
+// Función para actualizar la posición
+function updatePositionNews() {
+    let newPositionNews = currentIndexNews * 1200;
+    NewsContainer.style.transform = `translateX(-${newPositionNews}px)`;
+    NewsButtons.forEach((btn) => {
+        btn.classList.remove('button-active');
+    });
+    NewsButtons[currentIndexNews].classList.add('button-active');
+}
+
+// Evento de clic para los botones
+NewsButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+        currentIndexNews = index;
+        updatePositionNews();
+    });
+});
+
+// Actualizar la posición automáticamente cada 5 segundos
+setInterval(() => {
+    currentIndexNews += directionNews;
+    if (currentIndexNews >= NewsButtons.length || currentIndexNews < 0) {
+        directionNews *= -1; 
+        currentIndexNews += directionNews; 
+    }
+    updatePositionNews();
+}, 10000);
 
 
