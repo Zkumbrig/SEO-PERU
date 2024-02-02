@@ -913,7 +913,7 @@ html{
     gap: 30px;
 }
 .infocomentario{
-    margin-top: 30px;
+    margin-top: 55px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -947,6 +947,9 @@ html{
     margin-top: 20px;
     color: var(--subtitulos);
     margin-bottom: 20px;
+}
+.rating{
+    margin-top: 18px;
 }
 .rating span.active {
     color: #fdc716;
