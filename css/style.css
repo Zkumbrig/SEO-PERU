@@ -4,6 +4,10 @@
     --texto: #444444;
     --subtitulos: #333333;
 }
+::selection {
+    background-color: #3498db; /* Cambia el color de fondo cuando se selecciona el texto */
+    color: #fff; /* Cambia el color del texto cuando se selecciona el texto */
+  }
 html{
     scroll-behavior: smooth;
 }
@@ -681,6 +685,7 @@ html{
     width: 1000px;
     display: flex;
     justify-content: left;
+    transition: 0.6s;
 }
 .hora-pago div {
     width: 170px;
@@ -903,6 +908,28 @@ html{
     position: relative;
     height: 100%;
 }
+.contenidocom .articles button{
+    position: absolute;
+    border: none;
+    padding: 0;
+    height: max-content;
+    width: 40px;
+    z-index: 10;
+    cursor: default;
+}
+.contenidocom .articles button i{
+    font-size: 30px;
+    cursor: pointer;
+}
+.contenidocom .articles button i:hover{
+    color: var(--colorprincipal);
+}
+.contenidocom .articles button:first-child{
+    left: 0;
+}
+.contenidocom .articles button:last-child{
+    right: 0;
+}
 .contenidocom h2{
     width: 100%;
     color: var(--texto);
@@ -929,17 +956,18 @@ html{
     position: absolute;
     height: 100%;
     user-select: none;
+    transition: .5s;
 }
-.contenidocom article:nth-child(1){
+.contenidocom article:nth-child(2){
     animation: article1 12s infinite;
     position: initial;
 }
-.contenidocom article:nth-child(2){
+.contenidocom article:nth-child(3){
     animation: article2 12s infinite;
     animation-delay: 4s;
     filter: opacity(0);
 }
-.contenidocom article:nth-child(3){
+.contenidocom article:nth-child(4){
     animation: article3 12s infinite;
     animation-delay: 8s;
     filter: opacity(0);
@@ -1064,6 +1092,7 @@ html{
     font-weight: 400;
     color: var(--texto);
     margin: 0px 0px 15px;
+    border-bottom: 1px dashed #ccc;
 }
 .information-contact{
     padding: 0px 43px 0px 0px;
@@ -1103,9 +1132,17 @@ html{
     gap: 30px;
     margin-bottom: 30px;
 }
+.c2form select{
+    color: #888;
+}
+.c2form input[type="date"]{
+    color: #888;
+}
 form textarea{
+    height: 150px;
     margin-bottom: 30px;
     padding: 10px 0px 0px 10px;
+    resize: vertical;
 }
 .btn-form{
     background-color: var(--colorprincipal);
@@ -1335,6 +1372,9 @@ h5, .h5 {
     margin-bottom: 0;
     
 }
+a {
+    color: var(--subtitulos);
+}
 .widget-contact ul:not(.widget-contact-social) li:not(:last-child) {
     margin-bottom: 10px;
 }
@@ -1482,11 +1522,15 @@ input, select, textarea {
 input, button, select, textarea {
     background: transparent;
     border: 1px solid #d2d2d5;
-    -webkit-transition: all 0.4s ease-out 0s;
-    -o-transition: all 0.4s ease-out 0s;
-    transition: all 0.4s ease-out 0s;
+    -webkit-transition: .4s ease-out 0s;
+    -o-transition: .4s ease-out 0s;
+    transition: .2s ease-out 0s;
     color: #444444;
     font-family: "Open Sans", sans-serif;
+    outline: none;
+}
+input:focus, select:focus, textarea:focus{
+    border: 1px solid var(--colorprincipal)
 }
 button, input {
     overflow: visible;
@@ -1549,8 +1593,6 @@ img {
     vertical-align: middle;
     border-style: none;
 }
-
-
 
 .footer-bottomarea {
     padding: 25px 0;
