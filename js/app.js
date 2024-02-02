@@ -58,23 +58,7 @@ TherapyButtons.forEach((button) =>{
 });
 
 // Carrusel Our Latest News
-let OurLatestButtons = document.querySelectorAll('.therapy-global ul li button');
-let NewsContainer = document.querySelector('.hora-pago');
 
-TherapyButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        let newPosition = index * 400; 
-        TherapyContainer.style.transform = `translateX(-${newPosition}px)`;
-    });
-});
 
-TherapyButtons.forEach((button) =>{
-    button.addEventListener('click', () => {
-        TherapyButtons.forEach((btn) =>{
-            btn.classList.remove('button-active');
-        });
-        button.classList.add('button-active');
-    });
-});
 
 

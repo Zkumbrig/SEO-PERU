@@ -1044,6 +1044,7 @@ html{
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    height: 20%;
 }
 .information--{
     box-shadow: 0px  2px 10px rgba(35, 31, 32, 0.25);   
@@ -1103,7 +1104,6 @@ html{
     margin-bottom: 30px;
 }
 form textarea{
-    height: 157px;
     margin-bottom: 30px;
     padding: 10px 0px 0px 10px;
 }
@@ -1170,7 +1170,6 @@ form textarea{
 /* Estilos para los detalles de las noticias */
 .details-news {
     display: flex;
-    
     flex-flow: row wrap;
     justify-content: space-between;
     gap: 20px;   
