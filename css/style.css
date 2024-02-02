@@ -893,14 +893,15 @@ html{
 /*Comentarios*/
 .comentarios{
     padding: 100px 0px;
+    background-color: #f8f9fe;
 }
 .contenidocom{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50%;
-    margin: auto;
+    position: relative;
+    height: 100%;
 }
 .contenidocom h2{
     width: 100%;
@@ -911,6 +912,79 @@ html{
     align-items: center;
     justify-content: center;
     gap: 30px;
+}
+.contenidocom .articles{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contenidocom article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    user-select: none;
+}
+.contenidocom article:nth-child(1){
+    animation: article1 12s infinite;
+    position: initial;
+}
+.contenidocom article:nth-child(2){
+    animation: article2 12s infinite;
+    animation-delay: 4s;
+    filter: opacity(0);
+}
+.contenidocom article:nth-child(3){
+    animation: article3 12s infinite;
+    animation-delay: 8s;
+    filter: opacity(0);
+}
+@keyframes article1{
+    0%{
+        filter: opacity(0);
+    }
+    33%{
+        filter: opacity(1);
+    }
+    66%{
+        filter: opacity(0);
+    }
+    100%{
+        filter: opacity(0);
+    }
+}
+@keyframes article2{
+    0%{
+        filter: opacity(0);
+    }
+    33%{
+        filter: opacity(1);
+    }
+    66%{
+        filter: opacity(0);
+    }
+    100%{
+        filter: opacity(0);
+    }
+}
+@keyframes article3{
+    0%{
+        filter: opacity(0);
+    }
+    33%{
+        filter: opacity(1);
+    }
+    66%{
+        filter: opacity(0);
+    }
+    100%{
+        filter: opacity(0);
+    }
 }
 .infocomentario{
     margin-top: 55px;
@@ -942,6 +1016,7 @@ html{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 0 16%;
 }
 .contenidocom .contenidoinfo p{
     margin-top: 20px;
@@ -960,6 +1035,88 @@ html{
 }
 .rating span {
     color: #919191;
+}
+
+
+/*Informacion y Form*/
+.information-formulario{
+    padding: 100px 15px 100px 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.information--{
+    box-shadow: 0px  2px 10px rgba(35, 31, 32, 0.25);   
+    padding: 30px 70px;
+    width: 90%;
+}
+.infomation-hours h2{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--subtitulos);
+    margin: 0px 0px 15px;
+}
+.infomation-hours ul li{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--texto);
+    margin: 0px 0px 15px;
+}
+.information-contact{
+    padding: 0px 43px 0px 0px;
+    margin: 50px 0px 0px;
+}
+.information-contact h2{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--subtitulos);
+    margin: 0px 0px 15px;
+}
+.information-contact ul li{
+    display: flex;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--texto);
+    margin: 0px 0px 15px;
+}
+.form-map{
+    width: 100%;
+}
+.form-map h2{
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--subtitulos);
+    margin: 0px 0px 40px;
+}
+.c1form{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.c2form{
+    display: grid;
+    grid-template-columns: 47.2% auto;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+form textarea{
+    height: 157px;
+    margin-bottom: 30px;
+    padding: 10px 0px 0px 10px;
+}
+.btn-form{
+    background-color: var(--colorprincipal);
+    border-radius: 3px;
+    color: #ffffff;
+    width: 145.7px;
+    padding: 0px 40px;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
 /* Estilos para la sección de las últimas noticias */
@@ -1399,6 +1556,9 @@ img {
 .footer-bottomarea {
     padding: 25px 0;
     background: #101010;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
 }
 .footer-copyright {
     margin-bottom: 0;
