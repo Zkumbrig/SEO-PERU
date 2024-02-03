@@ -1287,23 +1287,39 @@ form textarea{
     position: relative;
     overflow: hidden;
 }
+.abtnlink::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: 0 100%;
+    transform: rotate(-90deg) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    transition: .5s;
+}
+.abtnlink:hover::before{
+    transform: rotate(0);
+    opacity: 0;
+}
 .abtnlink::after{
     content: "";
     position: absolute;
-    left: -80px;
-    bottom: 0;
-    height: 100%;
     width: 100%;
-    /* opacity: 0; */
-    background-color: rgb(255,255,255,0.5);
-    transform: rotateZ(90deg);
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: 100% 0;
+    transform: rotate(-90deg) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
     transition: .5s;
-    opacity: 0;
 }
 .abtnlink:hover::after{
-    left: -50px;
-    transform: rotateZ(135deg);
-    opacity: 1;
+    transform: rotate(0);
+    opacity: 0;
 }
 /* Estilos para la imagen de la noticia */
 .news img {
