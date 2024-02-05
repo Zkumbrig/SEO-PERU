@@ -1,11 +1,13 @@
 document.addEventListener("scroll", ()=>{
     const header = document.getElementById('botHeader');
     const up = document.getElementById('scrollUp');
+    const slider = document.getElementById('slider');
     if(window.scrollY > 200){
         header.style.position = "fixed";
         header.style.top = "0";
         header.style.boxShadow = "0 0 5px #0003";
         up.style.transform = "none";
+        slider.style.height = "calc(100vh - 50px)";
     }
     else{
         header.style.position = "static";
@@ -26,6 +28,15 @@ arrowRight.addEventListener("click",()=>{
     carrusel.style.transform = "translateX(-600px)";
 });
 document.addEventListener("DOMContentLoaded",()=>{
+    const contenidom = document.querySelectorAll('.contenidom');
+    const anchoPantasha = window.innerWidth;
+
+    if(anchoPantasha <= 990){
+        contenidom.classList.add("content");
+    }
+    else{
+        contenidom.classList.remove("content")
+    }
     setInterval(()=>{
         carrusel.style.transform = "translateX(-600px)";
     }, 5000);
@@ -89,13 +100,11 @@ function updateComment() {
     });
 
     // Luego, mostramos el artículo que queremos ver
-    articles[currentIndexComment].style.animation = "none";
     articles[currentIndexComment].style.filter = "opacity(1)";
 }
 
 // Cuando se hace clic en el botón izquierdo, queremos mostrar el artículo anterior
-btnLeft.addEventListener('click', () => {
-    // Disminuimos el índice del artículo actual
+btnLeft.addEventListener('click', () => {    // Disminuimos el índice del artículo actual
     // Si ya estamos en el primer artículo, vamos al último
     currentIndexComment = (currentIndexComment - 1 + articles.length) % articles.length;
 
@@ -151,4 +160,9 @@ setInterval(() => {
     updatePositionNews();
 }, 10000);
 
-
+// Media querys
+$(document).ready(function(){
+    $(".bars").click(function(){
+        $(".links").toggleClass("show");
+    });
+});

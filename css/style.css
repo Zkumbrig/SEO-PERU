@@ -11,12 +11,6 @@
 html{
     scroll-behavior: smooth;
 }
-.play {
-    display: flex;
-    position: absolute;
-    right: 1330px;
-    z-index: 2;
-}
 *{
     margin: 0;
     padding: 0;
@@ -25,6 +19,52 @@ html{
     box-sizing: border-box;
     transition: .2s;
     text-decoration: none;
+}
+/*Efecto Boton*/
+.botonEfecto{
+    position: relative;
+    overflow: hidden;
+}
+.botonEfecto::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: 0 100%;
+    transform: rotate(-90deg) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    transition: .5s;
+}
+.botonEfecto:hover::before{
+    transform: rotate(0);
+    opacity: 0;
+}
+.botonEfecto::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform-origin: 100% 0;
+    transform: rotate(-90deg) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+    transition: .5s;
+}
+.botonEfecto:hover::after{
+    transform: rotate(0);
+    opacity: 0;
+}
+.bookAppo:hover{
+    background-color: var(--colorprincipal);
+    color: #fff;
+}
+.bookAppoBot::before, .bookAppoBot::after{
+    background-color: rgba(0, 0, 0, 0.1);
 }
 .content {
     width: 1200px;
@@ -105,7 +145,7 @@ html{
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    z-index: 3;
+    z-index: 5;
 }
 .ajuste-nav {
     display: flex;
@@ -135,6 +175,7 @@ html{
 .navbar .links > li > a {
     padding: 34px 20px;
     color: var(--subtitulos);
+    font-weight: 500;
 }
 .navbar .links li a:hover,
 .dropdown-menu ol li a:hover {
@@ -253,8 +294,19 @@ html{
     background-color: var(--colorprincipal);
     border: 1px solid var(--colorprincipal);
 }
-.header-icons ul li .BA:hover i {
+.header-icons ul li a:hover i {
     color: #fff;
+}
+.header-icons ul li a.bars:hover {
+    background-color: initial;
+    border: 1px solid #444;
+}
+
+.header-icons ul li a.bars:hover i {
+    color: #373737;
+}
+.header-icons .bars{
+    display: none;
 }
 /* Ruleta de imágenes */
 .slider {
@@ -316,9 +368,10 @@ html{
     border-radius: 3px;
     white-space: nowrap;
 }
+
 /* Características */
 .caracteristicas {
-    padding: 0px 0px 100px 0px;
+    padding: 100px 0;
 }
 .caracteristicas .characters {
     display: grid;
@@ -347,6 +400,7 @@ html{
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
+    line-height: 1.8;
 }
 
 /* Sección efectos */
@@ -367,6 +421,13 @@ html{
     align-items: center;
     height: 100%;
     position: relative;
+}
+.efectos .contenidom .bgImg .play{
+    display: flex;
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    z-index: 3;
 }
 .efectos .contenidom .bgImg .bgOpacity {
     width: 100%;
@@ -397,6 +458,7 @@ html{
     font-weight: 500;
     font-size: 32px;
     margin: 0px 0px 15px;
+    line-height: 1.3;
 }
 .textomasaje p {
     font-family: "Open Sans", sans-serif;
@@ -449,8 +511,46 @@ html{
     font-weight: bold;
     color: var(--colorprincipal);
 }
-.efectos .contenidom .cajatexto .contacto .iconocontacto a i {
+.efectos .contenidom .cajatexto .contacto .iconocontacto a span {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #000;
+    background-color: #fff;
     margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.efectos .contenidom .cajatexto .contacto .iconocontacto a span i{
+    animation: botonTelefono 1.4s infinite;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorprincipal);
+}
+@keyframes botonTelefono{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    25%{
+        transform: scale(1.1);
+    }
+    50%{
+        transform: scale(0.95);
+    }
+    75%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: none;
+        opacity: 1;
+    }
 }
 
 /* Nuestros Servicios */
@@ -467,12 +567,13 @@ html{
     margin: auto;
 }
 .info-services h2 {
-    color: var(--texto);
+    color: var(--subtitulos);
     font-size: 32px;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 16px;
 }
 .info-services .line {
     width: 80px;
@@ -586,6 +687,7 @@ html{
     font-weight: 500;
     font-size: 32px;
     margin: 0px 0px 15px;
+    line-height: 40px;
 }
 .texbenefits span {
     font-size: 24px;
@@ -641,7 +743,7 @@ html{
     margin: 2px 0px;
 }
 .therapy-rates h2 {
-    color: var(--texto);
+    color: var(--subtitulos);
     font-size: 32px;
     font-weight: 500;
     margin: 0px 0px 15px;
@@ -684,7 +786,7 @@ html{
 .hora-pago {
     width: 1000px;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     transition: 0.6s;
 }
 .hora-pago div {
@@ -697,10 +799,16 @@ html{
     margin: 15px;
     transform: translateX(-15px);
 }
+.hora-pago .linea{
+    border: none;
+    border-top: 0.5px solid var(--colorprincipal);
+    width: 48%;
+    margin-bottom: 12px;
+}
 .hora-pago h4 {
     color: var(--subtitulos);
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 700;
 }
 .hora-pago h5 {
     color: var(--colorprincipal);
@@ -710,6 +818,7 @@ html{
 .hora-pago p {
     color: var(--texto);
     font-size: 14px;
+    margin-top: none;
 }
 .button-active i{
     color: var(--colorprincipal);
@@ -1274,52 +1383,16 @@ form textarea{
     color: #FFFFFF;
     font-weight: 500;
     height: 50px;
-    display: flex;
     width: 50%;
-    align-items: center;
-    justify-content: center;
     font-size: 16px;
     padding: 0 40px;
     background-color: #292828;
     border-radius: 3px;
     font-family: "Poppins", sans-serif;
     letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-.abtnlink::before{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    transform-origin: 0 100%;
-    transform: rotate(-90deg) scaleX(1);
-    background-color: rgba(255, 255, 255, 0.3);
-    opacity: 1;
-    transition: .5s;
-}
-.abtnlink:hover::before{
-    transform: rotate(0);
-    opacity: 0;
-}
-.abtnlink::after{
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    transform-origin: 100% 0;
-    transform: rotate(-90deg) scaleX(1);
-    background-color: rgba(255, 255, 255, 0.3);
-    opacity: 1;
-    transition: .5s;
-}
-.abtnlink:hover::after{
-    transform: rotate(0);
-    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /* Estilos para la imagen de la noticia */
 .news img {
@@ -1342,11 +1415,6 @@ form textarea{
 .iconos-news a i {
     margin-right: 8px;
 }
-
-
-
-
-
 
 /* FOOTER */
 .row {
@@ -1708,4 +1776,185 @@ img {
 }
 .mt-50-reverse {
     margin-top: -50px;
-} 
+}
+.widget-contact-social a:hover {
+    background-color: var(--colorprincipal);
+}
+
+/*Mediaquerys*/
+@media screen and (max-width: 990px){
+    /*Header*/
+    .content {
+        width: 900px;
+        max-width: 900px;
+        padding: 0px 15px;
+    }
+    .navbar .links {
+        display: none;
+    }
+    .navbar .links.show {
+        display: block;
+    }
+    .header-icons ul li .bars {
+        display: flex;
+    }
+    .top-header, .bot-header {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .header-icons ul li a.bars:active + .dropdown-menu {
+        display: block;
+    }
+    .dropdown-menu a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown-menu a:active + .dropdown-menu {
+        display: block;
+    }
+    .slider .slider-info h1 {
+        font-size: 45px;
+    }
+    .slider .slider-info p {
+        font-size: 14px;
+    }
+    /*Características*/
+    .caracteristicas .characters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; 
+    }
+    .caracteristicas .characters article {
+        flex: 1 0 45%; 
+    }
+    .caracteristicas .characters article:last-child {
+        flex: 0 0 50%; 
+        margin: auto; 
+    }
+    /*Efectos Contenidom*/
+    .efectos .contenidom{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .efectos .contenidom .bgImg{
+        width: 100%;
+    }
+    .efectos .contenidom .cajatexto{
+        width: 100%;
+    }
+    
+    /*Servicios*/
+    .services .info-services{
+        width: 75%;
+    }
+    .info-services h2{
+        font-size: 28px;
+    }
+    .details-services{
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        justify-content: center;
+        margin: auto;
+    }
+    /*Banner*/
+    .banner {
+        background-image: url('../img/bg/call-to-action-bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        height: 350px;
+        display: flex;
+        align-items: center;
+    }
+    .caja-banner{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .aditional-info{
+        margin-top: 20px;
+    }
+    /*Beneficios*/  
+    .benefits{
+        display: flex;
+        flex-direction: column;
+    }
+    .benefits > div{
+        width: 100%;
+    }
+    .therapy-rates{
+        width: 100%;
+        padding: 50px 15px;
+    }
+    .therapy-global {
+        display: flex;
+        flex-direction: column;
+    }
+    .therapy-rates .cards + ul {
+        display: flex;
+        position: relative;
+        left: auto;
+        right: -30px;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 7%;
+        z-index: 1;
+    }
+    /*Productos*/
+    .info-shop{
+        width: 80%;
+    }
+    .info-shop h2{
+        font-size: 28px;
+    }
+    .contenidocom h2{
+        font-size: 28px;
+    }
+    .carruselshop figcaption img {
+        width: 40px;
+        height: 20px;
+        object-fit: cover;
+        color: #e4af00;
+        filter: invert(77%) sepia(75%) saturate(726%) hue-rotate(355deg) brightness(100%) contrast(109%);
+        margin: 0;
+    }
+    /*Formulario-Datos*/
+    .information--{
+        width: 100%;
+    }
+    .information-formulario{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-map{
+        margin: 50px 0px 0px;
+    }
+
+    /*Noticias*/
+    .info-news{
+        width: 80%;
+    }
+    .info-news h2{
+        font-size: 28px;
+    }
+    /*Footer*/
+    .footer .widgets {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .footer .widgets > div {
+        flex: 1 0 50%;
+    }
+}
