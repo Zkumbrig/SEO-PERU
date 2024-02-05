@@ -1,4 +1,4 @@
-document.addEventListener("scroll", ()=>{
+ocument.addEventListener("scroll", ()=>{
     const header = document.getElementById('botHeader');
     const up = document.getElementById('scrollUp');
     if(window.scrollY > 200){
