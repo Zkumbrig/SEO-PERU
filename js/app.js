@@ -2,107 +2,35 @@ const up = document.getElementById('scrollUp');
 document.addEventListener("scroll", ()=>{
     const header = document.getElementById('botHeader');
     const slider = document.getElementById('slider');
-    if(window.scrollY > 200){
+    if(window.scrollY > 250){
         header.style.position = "fixed";
         header.style.top = "0";
         header.style.boxShadow = "0 0 5px #0003";
         up.style.transform = "none";
         slider.style.height = "calc(100vh - 50px)";
+        slider.classList.toggle("pruebaSlider")
     }
     else{
+        slider.style.height = "calc(100vh - 93px - 50px)"
         header.style.position = "static";
         up.style.transform = "translateX(100px)";
     }
 });
 
-// Carrusel Productos
-const arrowLeft = document.getElementById('arrowLeft');
-const arrowRight = document.getElementById('arrowRight');
-const carrusel = document.getElementById('carrusel');
-const iconOjo = document.querySelectorAll(".iconos > button");
-const cajaProduct = document.getElementById('showProduct');
-const product = document.getElementById('.cardProduct');
-
-iconOjo.forEach(function(element) {
-    element.addEventListener("click", function() {
-        const contenedorPadre = document.getElementById("contentCarrusel");
-        if (contenedorPadre) {
-            document.body.classList.add("activeProduct");
-            up.style.transform = "translateX(200px)";
-        }
-    });
-});
-
-cajaProduct.addEventListener("click",()=>{
-    document.body.classList.remove("activeProduct");
-});
-/*
-let isDragging = false;
-
-cajaProduct.addEventListener('mousedown', (event) => {
-    isDragging = true;
-});
-
-document.addEventListener('mouseup', () => {
-    isDragging = false;
-});
-
-document.addEventListener('mousemove', (event) => {
-    if (isDragging) {
-        let x = event.clientX;
-        let y = event.clientY;
-        cajaProduct.style.top = y + "px";
-    }
-    else{
-        cajaProduct.style.top = "0"
-    }
-});
-*/
-carrusel.style.transition = ".8s"
-arrowLeft.addEventListener("click",()=>{
-    carrusel.style.transform = "translateX(0)";
-});
-arrowRight.addEventListener("click",()=>{
-    carrusel.style.transform = "translateX(-600px)";
-});
-
-document.addEventListener("DOMContentLoaded",()=>{
-    const contenidom = document.getElementById('contenidom');
-    const anchoPantasha = window.innerWidth;
-
-    if(anchoPantasha <= 990){
-        contenidom.classList.add("content");
-        arrowRight.addEventListener("click",()=>{
-            carrusel.style.transform = "translateX(-690px)";
-        });
-        setInterval(()=>{
-            carrusel.style.transform = "translateX(-690px)";
-        }, 5000);
-        setInterval(()=>{
-            carrusel.style.transform = "translateX(0)";
-        }, 10000);
-    }
-    else{
-        contenidom.classList.remove("content");
-        setInterval(()=>{
-            carrusel.style.transform = "translateX(-600px)";
-        }, 5000);
-        setInterval(()=>{
-            carrusel.style.transform = "translateX(0)";
-        }, 10000);
-    }
-}); 
-
 // Carrusel Hora Pago
 let TherapyButtons = document.querySelectorAll('.therapy-global ul li button');
 let TherapyContainer = document.querySelector('.hora-pago');
 let currentIndex = 0;
-let direction = 1; 
 
 // Función para actualizar la posición
 function updatePosition() {
-    let newPosition = currentIndex * 400;
-    TherapyContainer.style.transform =`translateX(-${newPosition}px)`;
+    let newPosition;
+    if (window.innerWidth <= 768) {
+        newPosition = currentIndex * 400; 
+    } else {
+        newPosition = currentIndex * 400; 
+    }
+    TherapyContainer.style.transform = `translateX(-${newPosition}px)`;
     TherapyButtons.forEach((btn) => {
         btn.classList.remove('button-active');
     });
@@ -119,13 +47,145 @@ TherapyButtons.forEach((button, index) => {
 
 // Actualizar la posición automáticamente cada 5 segundos
 setInterval(() => {
-    currentIndex += direction;
-    if (currentIndex >= TherapyButtons.length || currentIndex < 0) {
-        direction *= -1; 
-        currentIndex += direction; 
+    currentIndex++;
+    if (window.innerWidth <= 767 && currentIndex >= 3) { 
+        currentIndex = 0; 
+    } else if (window.innerWidth > 767 && currentIndex >= 2) { 
+        currentIndex = 0; 
     }
     updatePosition();
 }, 5000);
+
+
+// Carrusel Productos
+const arrowLeft = document.getElementById('arrowLeft');
+const arrowRight = document.getElementById('arrowRight');
+const carrusel = document.getElementById('carrusel');
+const iconOjo = document.querySelectorAll(".iconos > button");
+const cajaProduct = document.getElementById('showProduct');
+const product = document.getElementById('.cardProduct');
+const iconCerrar = document.getElementById('iconCerrar');
+
+iconOjo.forEach(function(element) {
+    element.addEventListener("click", function() {
+        const contenedorPadre = document.getElementById("contentCarrusel");
+        if (contenedorPadre) {
+            document.body.classList.add("activeProduct");
+            document.body.style.userSelect = "none";
+            up.style.transform = "translateX(200px)";
+        }
+    });
+});
+
+iconCerrar.addEventListener("click",()=>{
+    document.body.classList.remove("activeProduct");
+});
+
+let isDragging = false;
+
+document.addEventListener("mousedown", () => {
+    isDragging = true;
+});
+
+document.addEventListener("mouseup", () => {
+    isDragging = false;
+});
+
+cajaProduct.addEventListener("mousemove", (event) => {
+    let y = event.clientY;
+    let altomax = window.innerHeight - y;
+    const altocaja = cajaProduct.clientHeight/2;
+    if (isDragging) {
+        cajaProduct.style.position = "absolute";
+        let calculo = y - altocaja
+        cajaProduct.style.transform = "translateY("+ calculo + "px)";
+        cajaProduct.style.transition = "0s";
+    }
+    else{
+        altomax = window.innerHeight/2;
+        let calculo = altomax - altocaja;
+        cajaProduct.style.transform ="none";
+        cajaProduct.style.transition = ".2s";
+        cajaProduct.style.background = "#fff"
+    }
+
+    if(cajaProduct.style.transform == "translateY(-100px)" || cajaProduct.style.transform == "translateY(200px)"){
+        document.body.classList.remove("activeProduct");
+    }
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+    const contenidom = document.getElementById('contenidom');
+    const anchoPantasha = window.innerWidth;
+
+    if(anchoPantasha <= 768){
+        contenidom.classList.add("content");
+        let clickCount = 0;
+        arrowRight.addEventListener("click",()=>{
+            clickCount++;
+            if(clickCount === 1) {
+                carrusel.style.transform = "translateX(-550px)";
+            } else if(clickCount === 2) {
+                carrusel.style.transform = "translateX(-1100px)";
+            } else {
+                carrusel.style.transform = "translateX(0)";
+                clickCount = 0;
+            }
+        });
+        arrowLeft.addEventListener("click",()=>{
+            clickCount++;
+            if(clickCount === 0) {
+                carrusel.style.transform = "translateX(0)";
+            } else if(clickCount === -1) {
+                carrusel.style.transform = "translateX(-550px)";
+            } else {
+                carrusel.style.transform = "translateX(-1100px)";
+                clickCount = -2;
+            }
+        });
+        setInterval(()=>{
+            clickCount++;
+            if(clickCount === 1) {
+                carrusel.style.transform = "translateX(-550px)";
+            } else if(clickCount === 2) {
+                carrusel.style.transform = "translateX(-1100px)";
+            } else {
+                carrusel.style.transform = "translateX(0)";
+                clickCount = 0;
+            }
+        }, 10000);
+    }
+    else if(anchoPantasha <= 990){
+        contenidom.classList.add("content");
+        arrowRight.addEventListener("click",()=>{
+            carrusel.style.transform = "translateX(-688px)";
+        });
+        arrowLeft.addEventListener("click",()=>{
+            carrusel.style.transform = "translateX(0)";
+        });
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(-688px)";
+        }, 5000);
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(0)";
+        }, 10000);
+    }
+    else{
+        contenidom.classList.remove("content");
+        arrowRight.addEventListener("click",()=>{
+            carrusel.style.transform = "translateX(-600px)";
+        });
+        arrowLeft.addEventListener("click",()=>{
+            carrusel.style.transform = "translateX(0)";
+        });
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(-600px)";
+        }, 5000);
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(0)";
+        }, 10000);
+    }
+}); 
 
 
 // Carrusel comentarios
@@ -172,7 +232,7 @@ btnRight.addEventListener('click', () => {
 updateComment();
 
 
-/// Carrusel Our Latest News
+// Carrusel Our Latest News
 let NewsButtons = document.querySelectorAll('.global-oln ul li button');
 let NewsContainer = document.querySelector('.details-news');
 let currentIndexNews = 0;
@@ -182,7 +242,10 @@ function updatePositionNews() {
     let newPositionNews;
     if (window.innerWidth <= 990) {
         newPositionNews = currentIndexNews * 710; // Ancho de noticia en media query
-    } else {
+    } else if (window.innerWidth <= 768){
+        newPositionNews = currentIndexNews * 550; // Ancho de noticia en media query
+    }
+     else {
         newPositionNews = currentIndexNews * 1200; // Ancho de noticia en pantalla completa
     }
     NewsContainer.style.transform = `translateX(-${newPositionNews}px)`;
@@ -201,14 +264,17 @@ NewsButtons.forEach((button, index) => {
 });
 
 setInterval(() => {
-    currentIndexNews++;
-    if (window.innerWidth <= 990 && currentIndexNews >= 3) { 
-        currentIndexNews = 0; 
-    } else if (window.innerWidth > 990 && currentIndexNews >= 2) {
-        currentIndexNews = 0; 
+    if (window.innerWidth <= 768) {
+        currentIndexNews = (currentIndexNews + 1) % 6;
+    } else if (window.innerWidth <= 990) {
+        currentIndexNews = (currentIndexNews + 1) % 3; 
+    } else {
+        currentIndexNews = (currentIndexNews + 1) % 2; 
     }
+    console.log("currentIndexNews:", currentIndexNews);
     updatePositionNews();
-}, 10000);
+}, 5000);
+
 
 
 // Media querys

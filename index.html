@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="shortcut icon" href="img/favicon/logoDialia.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logoDialia.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
-    <link rel="icon" href="img/logo.png " type="image/x-icon">
+    <link rel="icon" href="img/logoDialia.png " type="image/x-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -178,16 +178,22 @@
                 <img width="70" src="img/icons/Massage.png" alt="iMassage">
                 <h5>Massage Therapy</h5>
                 <p>Massage therapy is the manipulation of the soft tissues of the body including muscles, connective tissue, tendons, ligaments and joints.</p>
+                <div></div>
+                <img width="70" class="imgAbsolute" src="img/icons/Massage.png" alt="iMassage">
             </article>
             <article>
                 <img width="70" src="img/icons/terapia.png" alt="iTerapia">
                 <h5>Physio Therapy</h5>
                 <p>Physiotherapists spend years studying how the body works, how injuries impact performance & how to recover and repair injured tissues.</p>
+                <div></div>
+                <img width="70" class="imgAbsolute" src="img/icons/terapia.png" alt="iTerapia">
             </article>
             <article>
                 <img width="70" src="img/icons/acupuncture_1347357.png" alt="iAcupuncture">
                 <h5>Acupuncture</h5>
                 <p>Acupuncture is a form of alternative medicine in which thin needles are inserted into the body. It is a key component of medicine.</p>
+                <div></div>
+                <img width="70" class="imgAbsolute" src="img/icons/acupuncture_1347357.png" alt="iAcupuncture">
             </article>
         </div>
     </section>
@@ -375,6 +381,7 @@
                 <ul>
                     <li><button class="button-active"><i class="fa-regular fa-circle-dot"></i></button></li>
                     <li><button><i class="fa-regular fa-circle-dot"></i></button></li>
+                    <li class="lihp3"><button><i class="fa-regular fa-circle-dot"></i></button></li>
                 </ul>
             </div>
         </div>
@@ -387,7 +394,7 @@
                 <p>Lorem ipsum dolor sit amet, in quodsi vulputate pro. Ius illum vocent mediocritatem an cule dicta iriure at phaedrum.</p>
             </div>
             <div class="contentCarrusel">
-                <button class="butArrow arrowLeft-shop" id="arrowLeft"><i class="fa-solid fa-arrow-left-long"></i></button>
+                
                 <div class="carruselshop" id="carrusel"> <!--Agregarle un div para ver el carrusel-->
                     <figure class="slide">
                         <div class="img-container">
@@ -492,13 +499,95 @@
                         </div>
                     </figure>
                 </div>
-                <button class="butArrow arrowRight-shop" id="arrowRight"><i class="fa-solid fa-arrow-right-long"></i></button>
+                <div class="buttonContainer">
+                    <button class="butArrow arrowLeft-shop" id="arrowLeft"><i class="fa-solid fa-arrow-left-long"></i></button>
+                    <button class="butArrow arrowRight-shop" id="arrowRight"><i class="fa-solid fa-arrow-right-long"></i></button>
+                </div>
+                
             </div>
         </div>
-        <div class="showProduct" id="showProduct">
-            <div class="cardProduct" id="cardProduct">
-
-            </div>
+        <div class="cajaProduct" id="cajaProduct">
+            <aside class="cardProduct" id="showProduct">
+                <div class="iconX"><i id="iconCerrar" class="fa-solid fa-xmark"></i></div>
+                <div class="images">
+                    <img src="img/shop/product-image-1.jpg" alt="">
+                    <!-- <div class="carruselimg">
+                        <img src="img/shop/product-image-1.jpg" alt="">
+                        <img src="img/shop/product-image-2.jpg" alt="">
+                        <img src="img/shop/product-image-3.jpg" alt="">
+                        <img src="img/shop/product-image-4.jpg" alt="">
+                        <img src="img/shop/product-image-5.jpg" alt="">
+                        <img src="img/shop/product-image-6.jpg" alt="">
+                    </div> -->
+                </div>
+                <div class="contentCard">
+                    <h2>Cosmetology Essential oil</h2>
+                    <img width="70" src="img/shop/clasificacion.png" alt="estrella">
+                    <p class="stocktl">
+                        Availalbe:
+                        <span>In Stock</span>
+                    </p>
+                    <p class="preciostock">
+                        <del>$75.99</del>
+                        <span>$59.99</span>
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mi dolor, malesuada id metus a, mattis eleifend elit. Nullam pharetra consequat ex in dapibus. Vestibulum ante.
+                    </p>
+                    <div class="inputBtnn">
+                        <div class="contboton">
+                            <input type="text" value="1">
+                            <div class="btns">
+                                <button>+</button>
+                                <button>-</button> 
+                            </div>
+                        </div> 
+                        <a class="botonEfecto" href="">Add to cart</a> 
+                    </div>
+                    <div class="contentcategoria">
+                        <h6>Categories :</h6>
+                        <ul>
+                            <li>
+                                <a href="">Accesories,</a>
+                            </li>
+                            <li>
+                                <a href="">Electronics,</a>
+                            </li>
+                            <li>
+                                <a href="">White</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contenttags">
+                        <h6>Tags :</h6>
+                        <ul>
+                            <li>
+                                <a href="">Electronic,</a>
+                            </li>
+                            <li>
+                                <a href="">Smartwatch</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contentshare">
+                        <h6>Share :</h6>
+                        <ul>
+                            <li>
+                                <a href=""><i class="fa-brands fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-brands fa-pinterest-p"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa-brands fa-linkedin-in"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
         </div>
     </section>
 
@@ -507,7 +596,7 @@
         <div class="contenidocom content">
             <h2><span class="line"></span> What Our Customers Say <span class="line"></span></h2>
             <div class="articles">
-                <button><i class="fa-solid fa-arrow-left" id="btnIcoComLeft"></i></button>
+                
                 <article id="article1">
                     <div class="infocomentario">
                         <img src="img/authors/author-image-1.jpg" alt="">
@@ -530,7 +619,7 @@
                             <span class="active">
                                 <i class="fa-solid fa-star"></i> 
                             </span>
-                            <span class="active">
+                            <span class="active">       
                                 <i class="fa-solid fa-star"></i> 
                             </span>
                             <span class="active">
@@ -602,7 +691,10 @@
                         </div>
                     </div>
                 </article>
-                <button><i class="fa-solid fa-arrow-right" id="btnIcoComRight"></i></button>
+                <div class="buttonContainer">
+                    <button><i class="fa-solid fa-arrow-left" id="btnIcoComLeft"></i></button>
+                    <button><i class="fa-solid fa-arrow-right" id="btnIcoComRight"></i></button>
+                </div>
             </div>
         </div>
     </section>
@@ -762,6 +854,7 @@
                 <li class="linew3"><button><i class="fa-regular fa-circle-dot"></i></button>
                 <li class="linew4"><button><i class="fa-regular fa-circle-dot"></i></button>
                 <li class="linew5"><button><i class="fa-regular fa-circle-dot"></i></button>
+                <li class="linew6"><button><i class="fa-regular fa-circle-dot"></i></button>
             </ul>
     </section>
     

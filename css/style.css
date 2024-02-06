@@ -333,8 +333,8 @@ html{
     transform: translateY(5px);
 }
 /* Ruleta de imágenes */
+
 .slider {
-    height: calc(100vh - 93px - 50px);
     position: relative;
     display: flex;
     justify-content: center;
@@ -404,14 +404,53 @@ html{
     text-align: center;
 }
 .characters article {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 30px 20px;
 }
 .characters article img {
-    z-index: 1;
+    transition: .5s;
+    filter: invert(22%) sepia(79%) saturate(2350%) hue-rotate(183deg) brightness(109%) contrast(102%);
+}
+.characters article img:last-child{
+    position: absolute;
+    width: 35%;
+    right: -10px;
+    bottom: 5px;
+    opacity: 0;
     filter: invert(22%) sepia(79%) saturate(2350%) hue-rotate(183deg) brightness(109%) contrast(102%);
 }
 .characters article:hover {
+    transition: .5s;
     background-color: rgba(0, 117, 181, 0.1);
+}
+.characters article:hover img:last-child{
+    opacity: 0.2;
+}
+.characters h3 {
+    color: var(--texto);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px 0px 15px;
+    transition: .5s;
+}
+.characters article:hover h3, .details-services article:hover p{
+    transform: translateY(-40px);
+}
+.characters article > div{
+    width: 0;
+    height: 2px;
+    background-color: var(--colorprincipal);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: .5s;
+}
+.characters article:hover > div{
+    width: 100%;
 }
 .characters h5 {
     color: #333333;
@@ -468,7 +507,7 @@ html{
 .efectos .contenidom .cajatexto {
     width: calc(50% + 85px);
     text-align: left;
-    padding: 5% 0px;
+    padding: 70px 0px;
     padding-left: 80px;
 }
 .textomasaje{
@@ -485,9 +524,6 @@ html{
     line-height: 1.3;
 }
 .efectos .contenidocom .textomasaje p {
-    font-family: "Open Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 400;
     text-align: justify;
     width: calc(75% + 18px);
     margin: 0px 0px 15px;
@@ -495,6 +531,9 @@ html{
     color:  var(--texto);
 }
 .efectos .contenidom .cajatexto .textomasaje p {
+    font-family: "Open Sans", sans-serif;
+    color:  var(--texto);
+    font-weight: 400;
     font-size: 14px;
 }
 .color-theme {
@@ -779,6 +818,7 @@ html{
     font-size: 14px;
     font-weight: 400;
     margin: 0px 0px 15px;
+    line-height: 25px;
 }
 .navbenefits a {
     text-decoration: none;
@@ -789,6 +829,7 @@ html{
 }
 .navbenefits i {
     margin-right: 15px;
+    line-height: 30px;
 }
 .navbenefits li .color-theme {
     color: var(--colorprincipal);
@@ -818,7 +859,6 @@ html{
     flex-direction: column;
     justify-content: center;
     position: relative;
-    padding: 0px 15px;
 }
 .therapy-rates ul li {
     margin: 2px 0px;
@@ -916,6 +956,9 @@ html{
     font-size: 14px;
     margin-top: none;
 }
+.lihp3{
+    display: none;
+}
 .button-active i{
     color: var(--colorprincipal);
 }
@@ -937,32 +980,195 @@ html{
     align-items: center;
     justify-content: center;
 }
-.shop .showProduct{
+.shop .cajaProduct{
     width: 100%;
     height: 100vh;
     position: fixed;
     top: 0;
-    z-index: -100;
+    z-index: -1;
     opacity: 0;
     box-shadow: 0 0 8px #ccc;
-    backdrop-filter: blur(5px);
-    background-color: #0003;
+    backdrop-filter: blur(1px);
+    background-color: #1e1e1ee7;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.shop .showProduct .cardProduct{
+.shop .cajaProduct .cardProduct{
     width: 60%;
     height: 75%;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
-    cursor: grab;
+    /* box-shadow: 0 0 10px #222; */
+    z-index: 101;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.activeProduct .showProduct{
-    z-index: 100;
+.activeProduct .cajaProduct{
+    z-index: 80;
     opacity: 1;
 }
+.iconX{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+.cardProduct .contentCard, .cardProduct .images{
+    padding: 15px;
+}
+.cardProduct .contentCard h2{
+    font-size: 25px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+.cardProduct .contentCard img{
+    width: 80px;
+    height: 15px;
+    object-fit: cover;
+    filter: invert(77%) sepia(75%) saturate(726%) hue-rotate(355deg) brightness(100%) contrast(109%);
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+.cardProduct .contentCard .stocktl{
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.cardProduct .contentCard .stocktl span{
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    color: var(--colorprincipal);
+}
+
+.cardProduct .contentCard p{
+    font-size: 13px;
+}
+.contentCard .inputBtnn{
+    display: flex;
+}
+.contentCard .preciostock{
+    margin-bottom: 10px;
+}
+.contentCard .preciostock del{
+    text-decoration: line-through;
+    color: var(--texto);
+    font-weight: 600;
+    font-size: 15px;
+}
+.contentCard .preciostock span{
+    font-size: 20px;
+    font-weight: 600;
+}
+.inputBtnn a{
+    color: #FFFFFF;
+    font-weight: 500;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    padding: 0 40px;
+    background-color: #292828;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    margin: 30px 25px;
+}
+.inputBtnn .contboton{
+    width: 100px;
+    display: flex;
+    margin-top: 30px;
+}
+.inputBtnn .contboton .btns{
+    display: flex;
+    flex-direction: column;
+}
+.inputBtnn .contboton .btns button{
+    height: 25px;
+}
+.contentCard .contentcategoria{
+    border-top: 1px dashed #d2d2d5;
+    padding: 12px 0;
+    display: flex;
+}
+.contentCard .contentcategoria h6{
+    font-size: 15px;
+    font-weight: 500;
+}
+.contentCard .contentcategoria ul{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    
+}
+.contentCard .contentcategoria ul a{
+    margin-left: 5px;
+    color: var(--texto);
+    transition: .3s;
+}
+.contentCard .contentcategoria ul a:hover {
+    color: var(--colorprincipal);
+}
+.contentCard .contenttags{
+    border-top: 1px dashed #d2d2d5;
+    padding: 12px 0;
+    display: flex;
+}
+.contentCard .contenttags h6{
+    font-size: 15px;
+    font-weight: 500;
+}
+.contentCard .contenttags ul{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    
+}
+.contentCard .contenttags ul a{
+    margin-left: 5px;
+    color: var(--texto);
+    transition: .3s;
+}
+.contentCard .contenttags ul a:hover {
+    color: var(--colorprincipal);
+}
+.contentCard .contentshare{
+    border-top: 1px dashed #d2d2d5;
+    padding: 12px 0;
+    display: flex;
+}
+.contentCard .contentshare h6{
+    font-size: 15px;
+    font-weight: 500;
+}
+.contentCard .contentshare ul{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    
+}
+.contentCard .contentshare ul a{
+    margin-left: 10px;
+    font-size: 15px;
+    color: var(--texto);
+    transition: .2s;
+}
+.contentCard .contentshare ul a:hover {
+    color: var(--colorprincipal);
+}
+
+
+
 .activeProduct{
     overflow: hidden;
 }
@@ -1128,6 +1334,8 @@ html{
     font-size: 16px;
     font-weight: 500;
 }
+/*Contenido shop eye*/
+
 
 /*Comentarios*/
 .comentarios{
@@ -1143,6 +1351,7 @@ html{
     height: 100%;
 }
 .contenidocom .articles button{
+    top: 160px;
     position: absolute;
     border: none;
     padding: 0;
@@ -1193,17 +1402,17 @@ html{
     transition: .5s;
 }
 .contenidocom article:nth-child(2){
-    animation: article1 12s infinite;
+    animation: article1 6s infinite;
     position: initial;
 }
 .contenidocom article:nth-child(3){
-    animation: article2 12s infinite;
-    animation-delay: 4s;
+    animation: article2 6s infinite;
+    animation-delay: 2s;
     filter: opacity(0);
 }
 .contenidocom article:nth-child(4){
-    animation: article3 12s infinite;
-    animation-delay: 8s;
+    animation: article3 6s infinite;
+    animation-delay: 4s;
     filter: opacity(0);
 }
 @keyframes article1{
@@ -1552,7 +1761,9 @@ form textarea{
 .linew5{
     display: none;
 }
-
+.linew6{
+    display: none;
+}
 /* FOOTER */
 .row {
     display: -ms-flexbox;
@@ -1578,7 +1789,6 @@ form textarea{
 }
 .footer-widgets .single-widget {
     color: #ebebeb;
-    margin-top: 50px;
     font-size: 14px;
 }
 .single-widget {
