@@ -9,9 +9,12 @@
     <enlace rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" ></enlace>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="shortcut icon" href="img/favicon/logoDialia.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
     <link rel="icon" href="img/logo.png " type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
     <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647;"><i class="fa-solid fa-arrow-up"></i></a>
@@ -138,12 +141,18 @@
                             </li>
                             <li><a href="#">Contact</a></li>
                         </ul>
-                        
                         <div class="header-icons">
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
                                 <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-                                <li><a href="#" class="bars"><i class="fa-solid fa-bars"></i></a></li>
+                                <li><a href="#nav" class="bars">
+                                    <div class="iconBar">
+                                        <div class="line1"></div>
+                                        <div class="line2"></div>
+                                        <div class="line3"></div>
+                                    </div>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </nav>
@@ -184,7 +193,7 @@
     </section>
     <!--Contenido efectos positivos-->
     <section class="efectos">
-        <div class="contenidom">
+        <div class="contenidom" id="contenidom">
             <div class="bgImg">
                 <img class="play" src="img/icons/boton-play-expo.gif" alt="">
                 <div class="bgOpacity "></div>
@@ -198,7 +207,7 @@
                     </h2>
                     
                     <p>The health care profession of Dialia Registered Massage Therapy is far more advanced
-                    than typical bodywork or relaxation massage.</p>
+                    than typical bodywork or relaxation massage.</p><br>
                     
                     <p>Registered Massage therapy can be used for the treatment of both acute and chronic
                     conditions.The purpose of massage is generally for the treatment of body stress or
@@ -234,36 +243,48 @@
                     <h3>Sports Rehabilitation</h3>
                     <p>Aromatherapy uses plant materials and arom atic plant oils, including essential oils. It can be offered as a complementary therapy.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services1.png" alt="iservice">
                 </article>
                 <article>
                     <img width="70" src="img/icons/services2.png" alt="iservice2">
                     <h3>Home Care Physiotherapy</h3>
-                    <p>Physiotherapists spend years studying how the body works, how injuries impact performance & how to recover and repair injured tissues.</p>
+                    <p>Phy|siotherapists spend years studying how the body works, how injuries impact performance & how to recover and repair injured tissues.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services2.png" alt="iservice">
                 </article>
                 <article>
                     <img width="70" src="img/icons/services3.png" alt="iservice3">
                     <h3>Aroma Therapy</h3>
                     <p>Aromatherapy uses plant materials and arom atic plant oils, including essential oils. It can be offered as a complementary therapy.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services3.png" alt="iservice">
                 </article>
                 <article>
                     <img width="70" src="img/icons/services4.png" alt="iservice4">
                     <h3>Physiotherapy</h3>
                     <p>A personal injury from vehicle accident trauma is common many times effects of an vehicle injury are delayed or subtle.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services4.png" alt="iservice">
                 </article>
                 <article>
                     <img width="70" src="img/icons/services5.png" alt="iservice5">
                     <h3>Relaxation Massage</h3>
                     <p>This type of massage treatment is strictly for the purposes of rest and relaxation. massage technique is not designed for therapy.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services5.png" alt="iservice">
                 </article>
                 <article>
                     <img width="70" src="img/icons/services6.png" alt="iservice6">
                     <h3>Vehicle Injury Treatment</h3>
                     <p>A personal injury from vehicle accident trauma is common many times effects of an vehicle injury are delayed or subtle.</p>
                     <a href="#">Read more</a>
+                    <div></div>
+                    <img width="70" class="imgAbsolute" src="img/icons/services6.png" alt="iservice">
                 </article>
             </div>
         </div>
@@ -321,25 +342,30 @@
                                     45
                                     <span>minutes</span>
                                 </h4>
-                                <p>minutes</p>
                                 <hr class="linea">
                                 <h5>$75.00</h5>
                             </div>
                             <div>
-                                <h4>60</h4>
-                                <p>minutes</p>
+                                <h4>
+                                    60
+                                    <span>minutes</span>
+                                </h4>
                                 <hr class="linea">  
                                 <h5>$90.00</h5>
                             </div>
                             <div>
-                                <h4>90</h4>
-                                <p>minutes</p>
+                                <h4>
+                                    90
+                                    <span>minutes</span>
+                                </h4>
                                 <hr class="linea">  
                                 <h5>$120.00</h5>
                             </div>
                             <div>
-                                <h4>120</h4>
-                                <p>minutes</p>
+                                <h4>
+                                    120
+                                    <span>minutes</span>
+                                </h4>
                                 <hr class="linea">  
                                 <h5>$160.00</h5>
                             </div>
@@ -354,7 +380,7 @@
         </div>
     </section>
     <!-- Shop -->
-    <section class="shop content">
+    <section class="shop content" id="contentCarrusel">
         <div class="contenidoshop">
             <div class="info-shop">
                 <h2><span class="line"></span> Welcome to our shop <span class="line"></span></h2>
@@ -467,6 +493,11 @@
                     </figure>
                 </div>
                 <button class="butArrow arrowRight-shop" id="arrowRight"><i class="fa-solid fa-arrow-right-long"></i></button>
+            </div>
+        </div>
+        <div class="showProduct" id="showProduct">
+            <div class="cardProduct" id="cardProduct">
+
             </div>
         </div>
     </section>
@@ -728,6 +759,9 @@
             <ul>
                 <li><button class="button-active"><i class="fa-regular fa-circle-dot"></i></button></li>
                 <li><button><i class="fa-regular fa-circle-dot"></i></button></li>
+                <li class="linew3"><button><i class="fa-regular fa-circle-dot"></i></button>
+                <li class="linew4"><button><i class="fa-regular fa-circle-dot"></i></button>
+                <li class="linew5"><button><i class="fa-regular fa-circle-dot"></i></button>
             </ul>
     </section>
     

@@ -308,6 +308,30 @@ html{
 .header-icons .bars{
     display: none;
 }
+.header-icons .bars .iconBar{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+.header-icons .bars .iconBar > div{
+    width: 60%;
+    height: 2px;
+    background-color: #444;
+    position: absolute;
+    border-radius: 20px;
+}
+.header-icons .bars .iconBar > div:first-child{
+    transform: translateY(-5px);
+}
+.header-icons .bars .iconBar > div:last-child{
+    transform: translateY(5px);
+}
 /* Ruleta de imágenes */
 .slider {
     height: calc(100vh - 93px - 50px);
@@ -392,7 +416,7 @@ html{
 .characters h5 {
     color: #333333;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0px 0px 15px;
 }
 .characters p {
@@ -447,11 +471,11 @@ html{
     padding: 5% 0px;
     padding-left: 80px;
 }
-.textomasaje {
-    width: 80%;
+.textomasaje{
+    width: 570px;
 }
 .textomasaje h2 span {
-    font-size: 22px;
+    font-size: 25px;
 }
 .textomasaje h2 {
     color: var(--subtitulos);
@@ -460,7 +484,7 @@ html{
     margin: 0px 0px 15px;
     line-height: 1.3;
 }
-.textomasaje p {
+.efectos .contenidocom .textomasaje p {
     font-family: "Open Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -471,7 +495,7 @@ html{
     color:  var(--texto);
 }
 .efectos .contenidom .cajatexto .textomasaje p {
-    font-size: 15px;
+    font-size: 14px;
 }
 .color-theme {
     color: var(--colorprincipal);
@@ -594,19 +618,45 @@ html{
     text-align: center;
 }
 .details-services article {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 15px 20px;
 }
 .details-services article img {
+    transition: .5s;
     filter: invert(22%) sepia(79%) saturate(2350%) hue-rotate(183deg) brightness(109%) contrast(102%);
 }
+.details-services article img:last-child{
+    position: absolute;
+    width: 35%;
+    right: -10px;
+    bottom: 5px;
+    opacity: 0;
+    filter: invert(22%) sepia(79%) saturate(2350%) hue-rotate(183deg) brightness(109%) contrast(102%);
+}
+.details-services article:hover img:first-child {
+    transition: .5s;
+    opacity: 0;
+    transform: translateY(50px);
+    z-index: -1;
+    
+}
 .details-services article:hover {
+    transition: .5s;
     background-color: rgba(0, 117, 181, 0.1);
+}
+.details-services article:hover img:last-child{
+    opacity: 0.2;
 }
 .details-services h3 {
     color: var(--texto);
     font-size: 18px;
     font-weight: 500;
     margin: 20px 0px 15px;
+    transition: .5s;
 }
 .details-services p {
     color: #444444;
@@ -614,11 +664,42 @@ html{
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 15px;
+    transition: .5s;
+}
+.details-services article:hover h3, .details-services article:hover p{
+    transform: translateY(-40px);
 }
 .details-services a {
     color: var(--colorprincipal);
     font-weight: 500;
     font-size: 18px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: .5s;
+}
+.details-services article:hover a {
+    display: flex;
+    transform: translateY(-100%);
+    opacity: 1;
+    transition: all 5s;
+}
+.details-services article > div{
+    width: 0;
+    height: 2px;
+    background-color: var(--colorprincipal);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: .5s;
+}
+.details-services article:hover > div{
+    width: 100%;
 }
 
 /* Banner */
@@ -798,21 +879,36 @@ html{
     box-shadow: 0px  2px 10px rgba(35, 31, 32, 0.25);
     margin: 15px;
     transform: translateX(-15px);
+
 }
 .hora-pago .linea{
     border: none;
-    border-top: 0.5px solid var(--colorprincipal);
-    width: 48%;
-    margin-bottom: 12px;
+    border-top: 2px solid var(--colorprincipal);
+    width: 50%;
+    margin-bottom: 13px;
 }
 .hora-pago h4 {
     color: var(--subtitulos);
     font-size: 48px;
     font-weight: 700;
+    margin-bottom: none;
+    line-height: 33px;
+}
+.hora-pago h4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hora-pago h4 span {
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
 }
 .hora-pago h5 {
     color: var(--colorprincipal);
-    font-size: 24px;
+    font-size: 25px;
     font-weight: 500;
 }
 .hora-pago p {
@@ -840,6 +936,35 @@ html{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.shop .showProduct{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: -100;
+    opacity: 0;
+    box-shadow: 0 0 8px #ccc;
+    backdrop-filter: blur(5px);
+    background-color: #0003;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shop .showProduct .cardProduct{
+    width: 60%;
+    height: 75%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ccc;
+    cursor: grab;
+}
+.activeProduct .showProduct{
+    z-index: 100;
+    opacity: 1;
+}
+.activeProduct{
+    overflow: hidden;
 }
 .contenidoshop {
     width: 100%;
@@ -1308,6 +1433,7 @@ form textarea{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 15px;
 }
 .info-news .line {
     width: 80px;
@@ -1327,6 +1453,7 @@ form textarea{
     display: flex;
     justify-content: space-between;
     transition: 0.6s;
+    gap: 5px;
 }
  /*Estilo para cada noticia */
 .news {
@@ -1335,7 +1462,7 @@ form textarea{
     width: 400px;
     position: relative;
     overflow: hidden;
-    margin: 0 15px;
+    
 }
 .news > span {
     position: absolute;
@@ -1374,6 +1501,7 @@ form textarea{
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 30px;
+    line-height: 25px;
 }
 .global-info-news {
     padding-top: 25px;
@@ -1414,6 +1542,15 @@ form textarea{
 }
 .iconos-news a i {
     margin-right: 8px;
+}
+.linew3{
+    display: none;
+}
+.linew4{
+    display: none;
+}
+.linew5{
+    display: none;
 }
 
 /* FOOTER */
@@ -1779,182 +1916,4 @@ img {
 }
 .widget-contact-social a:hover {
     background-color: var(--colorprincipal);
-}
-
-/*Mediaquerys*/
-@media screen and (max-width: 990px){
-    /*Header*/
-    .content {
-        width: 900px;
-        max-width: 900px;
-        padding: 0px 15px;
-    }
-    .navbar .links {
-        display: none;
-    }
-    .navbar .links.show {
-        display: block;
-    }
-    .header-icons ul li .bars {
-        display: flex;
-    }
-    .top-header, .bot-header {
-        width: 100%;
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-    .header-icons ul li a.bars:active + .dropdown-menu {
-        display: block;
-    }
-    .dropdown-menu a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-    .dropdown-menu a:active + .dropdown-menu {
-        display: block;
-    }
-    .slider .slider-info h1 {
-        font-size: 45px;
-    }
-    .slider .slider-info p {
-        font-size: 14px;
-    }
-    /*Características*/
-    .caracteristicas .characters {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; 
-    }
-    .caracteristicas .characters article {
-        flex: 1 0 45%; 
-    }
-    .caracteristicas .characters article:last-child {
-        flex: 0 0 50%; 
-        margin: auto; 
-    }
-    /*Efectos Contenidom*/
-    .efectos .contenidom{
-        height: auto;
-        display: flex;
-        flex-direction: column;
-    }
-    .efectos .contenidom .bgImg{
-        width: 100%;
-    }
-    .efectos .contenidom .cajatexto{
-        width: 100%;
-    }
-    
-    /*Servicios*/
-    .services .info-services{
-        width: 75%;
-    }
-    .info-services h2{
-        font-size: 28px;
-    }
-    .details-services{
-        grid-template-columns: auto auto;
-        grid-template-rows: auto auto;
-        justify-content: center;
-        margin: auto;
-    }
-    /*Banner*/
-    .banner {
-        background-image: url('../img/bg/call-to-action-bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        height: 350px;
-        display: flex;
-        align-items: center;
-    }
-    .caja-banner{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .aditional-info{
-        margin-top: 20px;
-    }
-    /*Beneficios*/  
-    .benefits{
-        display: flex;
-        flex-direction: column;
-    }
-    .benefits > div{
-        width: 100%;
-    }
-    .therapy-rates{
-        width: 100%;
-        padding: 50px 15px;
-    }
-    .therapy-global {
-        display: flex;
-        flex-direction: column;
-    }
-    .therapy-rates .cards + ul {
-        display: flex;
-        position: relative;
-        left: auto;
-        right: -30px;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 7%;
-        z-index: 1;
-    }
-    /*Productos*/
-    .info-shop{
-        width: 80%;
-    }
-    .info-shop h2{
-        font-size: 28px;
-    }
-    .contenidocom h2{
-        font-size: 28px;
-    }
-    .carruselshop figcaption img {
-        width: 40px;
-        height: 20px;
-        object-fit: cover;
-        color: #e4af00;
-        filter: invert(77%) sepia(75%) saturate(726%) hue-rotate(355deg) brightness(100%) contrast(109%);
-        margin: 0;
-    }
-    /*Formulario-Datos*/
-    .information--{
-        width: 100%;
-    }
-    .information-formulario{
-        display: flex;
-        flex-direction: column;
-    }
-    .form-map{
-        margin: 50px 0px 0px;
-    }
-
-    /*Noticias*/
-    .info-news{
-        width: 80%;
-    }
-    .info-news h2{
-        font-size: 28px;
-    }
-    /*Footer*/
-    .footer .widgets {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .footer .widgets > div {
-        flex: 1 0 50%;
-    }
 }

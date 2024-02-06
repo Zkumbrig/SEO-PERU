@@ -1,6 +1,6 @@
+const up = document.getElementById('scrollUp');
 document.addEventListener("scroll", ()=>{
     const header = document.getElementById('botHeader');
-    const up = document.getElementById('scrollUp');
     const slider = document.getElementById('slider');
     if(window.scrollY > 200){
         header.style.position = "fixed";
@@ -19,7 +19,45 @@ document.addEventListener("scroll", ()=>{
 const arrowLeft = document.getElementById('arrowLeft');
 const arrowRight = document.getElementById('arrowRight');
 const carrusel = document.getElementById('carrusel');
+const iconOjo = document.querySelectorAll(".iconos > button");
+const cajaProduct = document.getElementById('showProduct');
+const product = document.getElementById('.cardProduct');
 
+iconOjo.forEach(function(element) {
+    element.addEventListener("click", function() {
+        const contenedorPadre = document.getElementById("contentCarrusel");
+        if (contenedorPadre) {
+            document.body.classList.add("activeProduct");
+            up.style.transform = "translateX(200px)";
+        }
+    });
+});
+
+cajaProduct.addEventListener("click",()=>{
+    document.body.classList.remove("activeProduct");
+});
+/*
+let isDragging = false;
+
+cajaProduct.addEventListener('mousedown', (event) => {
+    isDragging = true;
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        let x = event.clientX;
+        let y = event.clientY;
+        cajaProduct.style.top = y + "px";
+    }
+    else{
+        cajaProduct.style.top = "0"
+    }
+});
+*/
 carrusel.style.transition = ".8s"
 arrowLeft.addEventListener("click",()=>{
     carrusel.style.transform = "translateX(0)";
@@ -27,25 +65,32 @@ arrowLeft.addEventListener("click",()=>{
 arrowRight.addEventListener("click",()=>{
     carrusel.style.transform = "translateX(-600px)";
 });
+
 document.addEventListener("DOMContentLoaded",()=>{
-    const contenidom = document.querySelectorAll('.contenidom');
+    const contenidom = document.getElementById('contenidom');
     const anchoPantasha = window.innerWidth;
 
     if(anchoPantasha <= 990){
         contenidom.classList.add("content");
+        arrowRight.addEventListener("click",()=>{
+            carrusel.style.transform = "translateX(-690px)";
+        });
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(-690px)";
+        }, 5000);
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(0)";
+        }, 10000);
     }
     else{
-        contenidom.classList.remove("content")
+        contenidom.classList.remove("content");
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(-600px)";
+        }, 5000);
+        setInterval(()=>{
+            carrusel.style.transform = "translateX(0)";
+        }, 10000);
     }
-    setInterval(()=>{
-        carrusel.style.transform = "translateX(-600px)";
-    }, 5000);
-    if(carrusel.style.transform === "translateX(-600px"){
-        
-    }
-    setInterval(()=>{
-        carrusel.style.transform = "translateX(0)";
-    }, 10000);
 }); 
 
 // Carrusel Hora Pago
@@ -57,7 +102,7 @@ let direction = 1;
 // Función para actualizar la posición
 function updatePosition() {
     let newPosition = currentIndex * 400;
-    TherapyContainer.style.transform = `translateX(-${newPosition}px)`;
+    TherapyContainer.style.transform =`translateX(-${newPosition}px)`;
     TherapyButtons.forEach((btn) => {
         btn.classList.remove('button-active');
     });
@@ -81,6 +126,7 @@ setInterval(() => {
     }
     updatePosition();
 }, 5000);
+
 
 // Carrusel comentarios
 // Primero, obtenemos los botones y los artículos por su ID
@@ -126,15 +172,19 @@ btnRight.addEventListener('click', () => {
 updateComment();
 
 
-// Carrusel Our Latest News
+/// Carrusel Our Latest News
 let NewsButtons = document.querySelectorAll('.global-oln ul li button');
 let NewsContainer = document.querySelector('.details-news');
 let currentIndexNews = 0;
-let directionNews = 1; 
 
 // Función para actualizar la posición
 function updatePositionNews() {
-    let newPositionNews = currentIndexNews * 1200;
+    let newPositionNews;
+    if (window.innerWidth <= 990) {
+        newPositionNews = currentIndexNews * 710; // Ancho de noticia en media query
+    } else {
+        newPositionNews = currentIndexNews * 1200; // Ancho de noticia en pantalla completa
+    }
     NewsContainer.style.transform = `translateX(-${newPositionNews}px)`;
     NewsButtons.forEach((btn) => {
         btn.classList.remove('button-active');
@@ -150,19 +200,20 @@ NewsButtons.forEach((button, index) => {
     });
 });
 
-// Actualizar la posición automáticamente cada 5 segundos
 setInterval(() => {
-    currentIndexNews += directionNews;
-    if (currentIndexNews >= NewsButtons.length || currentIndexNews < 0) {
-        directionNews *= -1; 
-        currentIndexNews += directionNews; 
+    currentIndexNews++;
+    if (window.innerWidth <= 990 && currentIndexNews >= 3) { 
+        currentIndexNews = 0; 
+    } else if (window.innerWidth > 990 && currentIndexNews >= 2) {
+        currentIndexNews = 0; 
     }
     updatePositionNews();
 }, 10000);
 
+
 // Media querys
 $(document).ready(function(){
-    $(".bars").click(function(){
-        $(".links").toggleClass("show");
+    $('.header-icons .bars').click(function(){
+        $('.navbar .links').toggleClass('show');
     });
 });
