@@ -1,9 +1,4 @@
-/*Mediaquerys*/
-@media screen and (max-width: 1199px){
-    .content{
-        width: 960px;
-    }
-}
+/*Media query 990 pixeles*/
 @media screen and (max-width: 990px){
     /*Header*/
     
@@ -209,7 +204,7 @@
         display: flex;
         justify-content: center;
     }
-   .cards-content{
+    .cards-content{
         margin: 0;
    }
     
@@ -320,6 +315,7 @@
         flex: 1 0 50%;
     }
 }
+/*Media query 768 pixeles*/
 @media screen  and (max-width: 768px) {
     .content {
         width: 690px;
@@ -621,34 +617,27 @@
         width: 50%;
         margin-bottom: 13px;
     }
-    .cards {
+    .therapy-global{
         width: 100%;
-        overflow: visible;
+        overflow: hidden;
+        display: flex;
+        justify-content: flex-start;
+    }
+    .cards{
+        width: 100%;  
     }
     .cards-content{
-        width: 600px;
-        padding: 10px;
-        margin-left: -10px;
-        overflow: hidden;
+        width: 100%;
     }
-    .hora-pago {
-        width: 900px;
-        display: flex;
-        justify-content: center;
-        transition: 0.6s;
-    }
-    .hora-pago div {
-        width: 350px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        padding: 30px 15px 25px 15px;
-        box-shadow: 0px  2px 10px rgba(35, 31, 32, 0.25);
-        margin: 15px;
-        /*transform: translateX(-15px);*/
+    .hora-pago{
+        width: calc(100% * 3);
+        justify-content: left;
     }
     .hora-pago h4 {
         font-size: 48px;
+    }
+    .hora-pago > div{
+        width: calc(520px / 2 - 30px);
     }
 
     .hora-pago h4 span {
@@ -668,6 +657,12 @@
     }
     .lihp3{
         display: block;
+    }
+    .lihp4{
+        display: none;
+    }
+    .lihp5{
+        display: none;
     }
 
     /* Estilos para la sección de la tienda */
@@ -706,6 +701,31 @@
         margin: 10px 10px;
         opacity: 1;
     }
+    /*Comentarios*/
+    .contenidocom {
+        width: 550px;
+    }
+    .contenidocom .articles {
+        flex-direction: column;
+    }
+
+    .contenidocom .articles button {
+        position: static; 
+    }
+    .articles .buttonContainer {
+        order: 2; 
+        width: 100%; 
+        display: flex; 
+        justify-content: center; 
+        margin: auto;
+    }
+    .articles .buttonContainer button{
+        margin: 30px 10px 0px 10px;
+    }
+    .articles .contenidoinfo{
+        padding: 0;
+    }
+
     /*Formulario*/
     .btn-form{
         width: 109px;
@@ -729,8 +749,11 @@
         letter-spacing: 0;
     }
     .news img {
-        width: 530px;
+        width: 510px;
         height: 275px;
+    }
+    .news > span {
+        margin-top: 215px;
     }
     .linew4{
         display: block;
@@ -751,5 +774,211 @@
     }
     .footer-toparea{
         padding: 70px 0px;
+    }
+}
+/*Media query 576px*/
+@media screen  and (max-width: 576px){
+    .content{
+        width: 550px;
+        max-width: 432px;
+        padding: 0 15px;
+    }
+    /* Información de Contacto */
+    .top-header {
+        height: 100px;
+    }
+    .top-header * {
+        font-family: "Open Sans", sans-serif;
+    }
+    .headerTop-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 0;
+    }
+    .contact-info{
+        width: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        padding-left: 10px;
+    }
+    .slider .slider-info h1 {
+        font-size: 32px;
+    }
+    .slider .slider-info p {
+        width: 95%;
+        font-size: 14px;
+    }
+    .button {
+        font-size: 16px;
+        letter-spacing: 0;
+        height: 44px;
+        width: 124px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 25px;
+    }
+    /*Seccion efectos*/
+    
+    /*Servicios*/ 
+    .info-services{
+        width: 100% !important;
+    }
+    .info-services .line {
+        width: 0;
+        height: 0;
+    }
+    /*Beneficios*/
+    .benefits{
+        padding-top: 70px;
+    }
+    .texbenefits{
+        padding: 0px 0px;
+    }
+    .therapy-rates{
+        padding: 50px 0px 70px 0px;
+    }
+    .hora-pago .linea{
+        border: none;
+        border-top: 1px solid var(--colorprincipal);
+        width: 20%;
+        margin-bottom: 13px;
+    }
+
+    .therapy-global ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: -30px;
+    }
+    .therapy-global ul li {
+        flex: 1;
+    }
+    .therapy-global ul li button {
+        margin-right: 10px; /* Añade margen a la izquierda de los botones */
+    }
+    .cards{
+        width: 100%;  
+    }
+    .cards-content{
+        width: 100%;
+    }
+    .hora-pago{
+        width: 2050px;
+    }
+    .hora-pago h4 {
+        font-size: 48px;
+    }
+    .hora-pago > div{
+        width: 1900px;
+    }
+    
+    .lihp4{
+        display: block;
+    }
+    .lihp5{
+        display: block;
+    }
+    /*Shop*/
+    .info-shop{
+        width: 100%;
+    }
+    .info-shop .line{
+        width: 0;
+        height: 0;
+    }
+    .contentCarrusel {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+    }
+    .carruselshop{
+        width: calc(550px * 6);
+    }
+    .carruselshop .slide {
+        width: 478px;
+        padding: 0 15px;
+        margin-bottom: 20px;
+    }
+    /* .carruselshop .slide img{
+        object-fit: contain;
+    } */
+    /*Comentarios*/
+    .comentarios{
+        padding: 70px 0px;
+    }
+    .contenidocom h2{
+        font-size: 26px;
+        width: 100%;
+    }
+    .contenidocom .line{
+        width: 0;
+        height: 0;
+    }
+    /*Formulario*/
+    .inform-formSec{
+        padding: 70px 0px;
+    }
+    .information--{
+        padding: 30px;
+        height: 564px;
+    }
+    .information-- .information-contact{
+        padding: 0px 30px 0px 0px;
+    }
+    .infomation-hours h2{
+        font-size: 16px;
+    }
+    .information-contact h2{
+        font-size: 16px;
+    }
+    .information-contact ul li {
+        display: flex; 
+        flex-direction: column; 
+        margin-bottom: 10px;
+    }
+    
+    .information-contact ul li b {
+        order: 1; 
+    }
+    
+    .information-contact ul li a {
+        order: 2; 
+    }
+    .form-map h2{
+        font-size: 26px;
+    }
+    .form-map form .c1form{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-map form .c2form{
+        display: flex;
+        flex-direction: column;
+    }
+    /*Noticias*/
+    .global-oln{
+        padding: 70px 0px;
+    }
+    .info-news {
+        width: 100%;
+    }
+    .info-news .line{
+        width: 0;
+        height: 0;
+    }
+    .news img {
+        height: 221px;
+    }
+    .news > span {
+        margin-top: 160px;
     }
 }

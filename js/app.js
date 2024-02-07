@@ -8,7 +8,7 @@ document.addEventListener("scroll", ()=>{
         header.style.boxShadow = "0 0 5px #0003";
         up.style.transform = "none";
         slider.style.height = "calc(100vh - 50px)";
-        slider.classList.toggle("pruebaSlider")
+        // slider.classList.toggle("pruebaSlider")
     }
     else{
         slider.style.height = "calc(100vh - 93px - 50px)"
@@ -25,8 +25,13 @@ let currentIndex = 0;
 // Función para actualizar la posición
 function updatePosition() {
     let newPosition;
-    if (window.innerWidth <= 768) {
-        newPosition = currentIndex * 400; 
+    if (window.innerWidth <= 768 && window.innerWidth > 576) {
+        newPosition = currentIndex * 520; 
+        if (newPosition >= 1040) {
+            newPosition = currentIndex * 390;
+        }
+    } else if (window.innerWidth <= 576) {
+        newPosition = currentIndex * 410; 
     } else {
         newPosition = currentIndex * 400; 
     }
@@ -37,6 +42,8 @@ function updatePosition() {
     TherapyButtons[currentIndex].classList.add('button-active');
 }
 
+
+
 // Evento de clic para los botones
 TherapyButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -45,16 +52,18 @@ TherapyButtons.forEach((button, index) => {
     });
 });
 
-// Actualizar la posición automáticamente cada 5 segundos
+//Actualizar la posición automáticamente cada 5 segundos
 setInterval(() => {
-    currentIndex++;
-    if (window.innerWidth <= 767 && currentIndex >= 3) { 
-        currentIndex = 0; 
-    } else if (window.innerWidth > 767 && currentIndex >= 2) { 
-        currentIndex = 0; 
+    if (window.innerWidth <= 768 && window.innerWidth > 576) {
+        currentIndex = (currentIndex + 1) % 3; 
+    } else if (window.innerWidth <= 576) {
+        currentIndex = (currentIndex + 1) % 5; 
+    } else {
+        currentIndex = (currentIndex + 1) % 2; 
     }
     updatePosition();
 }, 5000);
+
 
 
 // Carrusel Productos
@@ -79,6 +88,8 @@ iconOjo.forEach(function(element) {
 
 iconCerrar.addEventListener("click",()=>{
     document.body.classList.remove("activeProduct");
+    document.body.style.userSelect = "initial";
+    up.style.transform = "none";
 });
 
 let isDragging = false;
@@ -92,26 +103,27 @@ document.addEventListener("mouseup", () => {
 });
 
 cajaProduct.addEventListener("mousemove", (event) => {
-    let y = event.clientY;
-    let altomax = window.innerHeight - y;
-    const altocaja = cajaProduct.clientHeight/2;
+    let altomax = window.innerHeight;
+    let altocaja = cajaProduct.clientHeight;
+    let calculoY = altomax/2 - altocaja/2;
+    let y = event.clientY - calculoY + 0.5;
+    console.log(y);
+    let calculo = y - altomax/2;
     if (isDragging) {
         cajaProduct.style.position = "absolute";
-        let calculo = y - altocaja
         cajaProduct.style.transform = "translateY("+ calculo + "px)";
         cajaProduct.style.transition = "0s";
+        console.log(calculo);
     }
     else{
-        altomax = window.innerHeight/2;
-        let calculo = altomax - altocaja;
         cajaProduct.style.transform ="none";
         cajaProduct.style.transition = ".2s";
         cajaProduct.style.background = "#fff"
     }
 
-    if(cajaProduct.style.transform == "translateY(-100px)" || cajaProduct.style.transform == "translateY(200px)"){
+    /*if(calculo >= 400 || calculo <= -200){
         document.body.classList.remove("activeProduct");
-    }
+    }*/
 });
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -155,6 +167,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             }
         }, 10000);
     }
+    
     else if(anchoPantasha <= 990){
         contenidom.classList.add("content");
         arrowRight.addEventListener("click",()=>{
@@ -271,9 +284,8 @@ setInterval(() => {
     } else {
         currentIndexNews = (currentIndexNews + 1) % 2; 
     }
-    console.log("currentIndexNews:", currentIndexNews);
     updatePositionNews();
-}, 5000);
+}, 10000);
 
 
 
