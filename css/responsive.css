@@ -901,10 +901,10 @@
         flex-direction: column;
     }
     .carruselshop{
-        width: calc(550px * 6);
+        width: calc(402px * 6);
     }
     .carruselshop .slide {
-        width: 478px;
+        width: 402px;
         padding: 0 15px;
         margin-bottom: 20px;
     }

@@ -56,7 +56,8 @@ TherapyButtons.forEach((button, index) => {
 setInterval(() => {
     if (window.innerWidth <= 768 && window.innerWidth > 576) {
         currentIndex = (currentIndex + 1) % 3; 
-    } else if (window.innerWidth <= 576) {
+    }
+    else if (window.innerWidth <= 576) {
         currentIndex = (currentIndex + 1) % 5; 
     } else {
         currentIndex = (currentIndex + 1) % 2; 
@@ -130,7 +131,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     const contenidom = document.getElementById('contenidom');
     const anchoPantasha = window.innerWidth;
 
-    if(anchoPantasha <= 768){
+    if(anchoPantasha <= 768 && anchoPantasha > 576){
         contenidom.classList.add("content");
         let clickCount = 0;
         arrowRight.addEventListener("click",()=>{
@@ -158,17 +159,17 @@ document.addEventListener("DOMContentLoaded",()=>{
         setInterval(()=>{
             clickCount++;
             if(clickCount === 1) {
-                carrusel.style.transform = "translateX(-550px)";
-            } else if(clickCount === 2) {
-                carrusel.style.transform = "translateX(-1100px)";
-            } else {
                 carrusel.style.transform = "translateX(0)";
+            } else if(clickCount === 2) {
+                carrusel.style.transform = "translateX(-550px)";
+            } else {
+                carrusel.style.transform = "translateX(-1100px)";
                 clickCount = 0;
             }
         }, 10000);
     }
     
-    else if(anchoPantasha <= 990){
+    else if(anchoPantasha <= 990 && anchoPantasha > 768){
         contenidom.classList.add("content");
         arrowRight.addEventListener("click",()=>{
             carrusel.style.transform = "translateX(-688px)";
@@ -177,10 +178,65 @@ document.addEventListener("DOMContentLoaded",()=>{
             carrusel.style.transform = "translateX(0)";
         });
         setInterval(()=>{
-            carrusel.style.transform = "translateX(-688px)";
+            carrusel.style.transform = "translateX(-690px)";
         }, 5000);
         setInterval(()=>{
             carrusel.style.transform = "translateX(0)";
+        }, 10000);
+    }
+    else if (anchoPantasha <= 576){
+        contenidom.classList.add("content");
+        let clickCount = 0;
+        arrowRight.addEventListener("click", () => {
+            clickCount++;
+            if (clickCount === 1) {
+                carrusel.style.transform = "translateX(-402px)";
+            } else if (clickCount === 2) {
+                carrusel.style.transform = "translateX(-804px)";
+            } else if (clickCount === 3) {
+                carrusel.style.transform = "translateX(-1206px)";
+            } else if (clickCount === 4) {
+                carrusel.style.transform = "translateX(-1608px)";
+            } else if (clickCount === 5) {
+                carrusel.style.transform = "translateX(-2010px)";
+            } else if (clickCount === 6) {
+                carrusel.style.transform = "translateX(0)";
+                clickCount = 0;
+            }
+        });
+        arrowLeft.addEventListener("click", () => {
+            clickCount--;
+            if (clickCount === 0) {
+                carrusel.style.transform = "translateX(0)";
+            } else if (clickCount === -1) {
+                carrusel.style.transform = "translateX(-2010px)";
+            } else if (clickCount === -2) {
+                carrusel.style.transform = "translateX(-1608px)";
+            } else if (clickCount === -3) {
+                carrusel.style.transform = "translateX(-1206px)";
+            } else if (clickCount === -4) {
+                carrusel.style.transform = "translateX(-804px)";
+            } else if (clickCount === -5) {
+                carrusel.style.transform = "translateX(-402px)";
+                clickCount = -1;
+            }
+        });
+        setInterval(() => {
+            clickCount++;
+            if (clickCount === 1) {
+                carrusel.style.transform = "translateX(-402px)";
+            } else if (clickCount === 2) {
+                carrusel.style.transform = "translateX(-804px)";
+            } else if (clickCount === 3) {
+                carrusel.style.transform = "translateX(-1206px)";
+            } else if (clickCount === 4) {
+                carrusel.style.transform = "translateX(-1608px)";
+            } else if (clickCount === 5) {
+                carrusel.style.transform = "translateX(-2010px)";
+            } else if (clickCount === 6) {
+                carrusel.style.transform = "translateX(0)";
+                clickCount = 0;
+            }
         }, 10000);
     }
     else{
